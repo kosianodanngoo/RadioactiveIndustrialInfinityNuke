@@ -1,0 +1,7 @@
+{
+  "parent": "industrialforegoing:item/infinity_nuke",
+  "textures": {
+    "0": "radioactive_industrial_infinity_nuke:item/radioactive_infinity_nuke",
+    "particle": "radioactive_industrial_infinity_nuke:item/radioactive_infinity_nuke"
+  }
+}
