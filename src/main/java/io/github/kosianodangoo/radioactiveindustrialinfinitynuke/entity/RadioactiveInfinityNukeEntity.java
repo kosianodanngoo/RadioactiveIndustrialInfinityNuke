@@ -1,7 +1,10 @@
 package io.github.kosianodangoo.radioactiveindustrialinfinitynuke.entity;
 
 import com.buuz135.industrial.entity.InfinityNukeEntity;
+import com.buuz135.industrial.utils.explosion.ProcessExplosion;
+import io.github.kosianodangoo.radioactiveindustrialinfinitynuke.Config;
 import io.github.kosianodangoo.radioactiveindustrialinfinitynuke.item.infinity.item.ItemRadioactiveInfinityNuke;
+import io.github.kosianodangoo.radioactiveindustrialinfinitynuke.api.mixin.IProcessRadioactiveExplosion;
 import io.github.kosianodangoo.radioactiveindustrialinfinitynuke.mixin.InfinityNukeEntityAccessor;
 import io.github.kosianodangoo.radioactiveindustrialinfinitynuke.module.ModuleRadioactiveInfinityNuke;
 import net.minecraft.world.entity.EntityType;
@@ -20,5 +23,9 @@ public class RadioactiveInfinityNukeEntity extends InfinityNukeEntity {
         ((InfinityNukeEntityAccessor) this).setPlacedBy(owner);
         this.setOriginal(original);
         this.setRadius(ItemRadioactiveInfinityNuke.getRadius(original));
+    }
+
+    public void initExplosion(ProcessExplosion explosionHelper){
+        ((IProcessRadioactiveExplosion)explosionHelper).radioactive_industrial_infinity_nuke$setRadiation(getRadius() * getRadius() * Config.SIEVERT_MULTIPLIER.get());
     }
 }
